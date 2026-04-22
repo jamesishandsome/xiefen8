@@ -14,6 +14,7 @@ const AuctionPhase = ({ players, teams, onComplete }) => {
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [selectedTeamId, setSelectedTeamId] = useState('');
   const [bidAmount, setBidAmount] = useState('');
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     try {
@@ -67,6 +68,16 @@ const AuctionPhase = ({ players, teams, onComplete }) => {
 
     if (!team || (team.budget || 0) - (team.spent || 0) < price) return;
 
+    // 保存当前状态到历史记录
+    setHistory([...history, {
+      teams: currentTeams,
+      queue: auctionQueue,
+      player: currentPlayer,
+      action: 'sold',
+      teamId: teamId,
+      price: price
+    }]);
+
     const updatedTeams = currentTeams.map(t => {
       if (t.id === teamId) {
         return {
@@ -83,7 +94,27 @@ const AuctionPhase = ({ players, teams, onComplete }) => {
   };
 
   const handlePass = () => {
+    // 保存当前状态到历史记录
+    setHistory([...history, {
+      teams: currentTeams,
+      queue: auctionQueue,
+      player: currentPlayer,
+      action: 'pass'
+    }]);
+
     moveToNextPlayer();
+  };
+
+  const handleUndo = () => {
+    if (history.length === 0) return;
+
+    const lastState = history[history.length - 1];
+    setCurrentTeams(lastState.teams);
+    setAuctionQueue(lastState.queue);
+    setCurrentPlayer(lastState.player);
+    setSelectedTeamId('');
+    setBidAmount(lastState.player ? (lastState.player.startPrice || 0) : '');
+    setHistory(history.slice(0, -1));
   };
 
   const moveToNextPlayer = () => {
@@ -271,6 +302,14 @@ const AuctionPhase = ({ players, teams, onComplete }) => {
                 </button>
                 <button className="btn-pass" onClick={handlePass}>
                   流拍 / 跳过
+                </button>
+                <button
+                  className="btn-undo"
+                  onClick={handleUndo}
+                  disabled={history.length === 0}
+                  title="撤销上一步操作"
+                >
+                  ↶ 撤销
                 </button>
               </div>
             </div>

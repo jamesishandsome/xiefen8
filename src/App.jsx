@@ -6,6 +6,7 @@ import BudgetSetup from './components/BudgetSetup';
 import AuctionPhase from './components/AuctionPhase';
 import FinalAllocation from './components/FinalAllocation';
 import { parseExcelFile, loadDefaultExcel } from './utils/excelParser';
+import { saveState, loadState, clearState, exportState, importState } from './utils/storage';
 import './styles/global.css';
 import './App.css';
 
@@ -27,6 +28,20 @@ function App() {
 
   useEffect(() => {
     console.log('App mounted, loading default Excel...');
+
+    // 尝试加载保存的状态
+    const savedState = loadState();
+    if (savedState) {
+      console.log('Found saved state:', savedState);
+      setPlayers(savedState.players || []);
+      setTeams(savedState.teams || []);
+      setCaptainIds(savedState.captainIds || []);
+      setCurrentPhase(savedState.currentPhase || PHASES.UPLOAD);
+      setLoading(false);
+      return;
+    }
+
+    // 没有保存的状态，加载默认Excel
     loadDefaultExcel()
       .then(data => {
         console.log('Loaded players:', data.length);
@@ -108,6 +123,59 @@ function App() {
     setCurrentPhase(PHASES.FINAL_ALLOCATION);
   };
 
+  const handleSave = () => {
+    const state = {
+      currentPhase,
+      players,
+      teams,
+      captainIds
+    };
+    const success = saveState(state);
+    if (success) {
+      alert('保存成功！');
+    } else {
+      alert('保存失败，请重试');
+    }
+  };
+
+  const handleExport = () => {
+    const state = {
+      currentPhase,
+      players,
+      teams,
+      captainIds
+    };
+    exportState(state);
+  };
+
+  const handleImport = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        const state = await importState(file);
+        setPlayers(state.players || []);
+        setTeams(state.teams || []);
+        setCaptainIds(state.captainIds || []);
+        setCurrentPhase(state.currentPhase || PHASES.UPLOAD);
+        alert('导入成功！');
+      } catch (error) {
+        console.error('Failed to import state:', error);
+        alert('导入失败，请检查文件格式');
+      }
+    }
+  };
+
+  const handleReset = () => {
+    if (confirm('确定要重置所有数据吗？此操作不可撤销。')) {
+      clearState();
+      setPlayers([]);
+      setTeams([]);
+      setCaptainIds([]);
+      setCurrentPhase(PHASES.UPLOAD);
+      window.location.reload();
+    }
+  };
+
   console.log('App render - Phase:', currentPhase, 'Players:', players.length, 'Loading:', loading);
 
   if (loading) {
@@ -128,6 +196,30 @@ function App() {
 
   return (
     <div className="app">
+      {/* 全局控制栏 */}
+      {currentPhase !== PHASES.UPLOAD && (
+        <div className="global-controls">
+          <button className="btn-control" onClick={handleSave} title="保存当前进度">
+            💾 保存
+          </button>
+          <button className="btn-control" onClick={handleExport} title="导出为文件">
+            📥 导出
+          </button>
+          <label className="btn-control" title="导入文件">
+            📤 导入
+            <input
+              type="file"
+              accept=".json"
+              onChange={handleImport}
+              style={{ display: 'none' }}
+            />
+          </label>
+          <button className="btn-control btn-danger" onClick={handleReset} title="重置所有数据">
+            🔄 重置
+          </button>
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         {currentPhase === PHASES.UPLOAD && (
           <motion.div
