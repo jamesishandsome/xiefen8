@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Excel Test</title>
+</head>
+<body>
+  <h1>测试Excel加载</h1>
+  <div id="result"></div>
+  <script type="module">
+    import * as XLSX from 'https://cdn.sheetjs.com/xlsx-0.20.1/package/xlsx.mjs';
+
+    async function testLoad() {
+      try {
+        const response = await fetch('/第八届下分杯选手池.xlsx');
+        console.log('Response status:', response.status);
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch: ' + response.status);
+        }
+
+        const arrayBuffer = await response.arrayBuffer();
+        console.log('ArrayBuffer size:', arrayBuffer.byteLength);
+
+        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+
+        const players = jsonData.filter(row => row['游戏内名字']);
+
+        document.getElementById('result').innerHTML = `
+          <p>成功加载 ${players.length} 名选手</p>
+          <pre>${JSON.stringify(players.slice(0, 3), null, 2)}</pre>
+        `;
+      } catch (error) {
+        document.getElementById('result').innerHTML = `
+          <p style="color: red;">错误: ${error.message}</p>
+          <pre>${error.stack}</pre>
+        `;
+        console.error('Error:', error);
+      }
+    }
+
+    testLoad();
+  </script>
+</body>
+</html>

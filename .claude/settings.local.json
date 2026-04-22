@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import openpyxl; wb = openpyxl.load_workbook\\('第八届下分杯选手池.xlsx'\\); ws = wb.active; print\\('列名:', [cell.value for cell in ws[1]]\\); print\\('第一行数据:', [cell.value for cell in ws[2]]\\)\")",
+      "Bash(python -c \"import openpyxl; wb = openpyxl.load_workbook\\('第八届下分杯选手池.xlsx'\\); ws = wb.active; print\\('列名:', [cell.value for cell in ws[1]]\\); print\\('第一行数据:', [cell.value for cell in ws[2]]\\)\")",
+      "Bash(node *)",
+      "Bash(bun run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/test.html)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

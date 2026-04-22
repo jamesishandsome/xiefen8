@@ -1,0 +1,244 @@
+.player-card {
+  background: var(--dark-surface-1);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--dota-red) 0%, var(--dota-gold) 50%, var(--dota-green) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hero);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.player-card:hover::before {
+  opacity: 1;
+}
+
+.player-card.selected {
+  border-color: var(--apple-blue);
+  background: var(--dark-surface-3);
+}
+
+.player-card.selected::before {
+  opacity: 1;
+  background: var(--apple-blue);
+}
+
+.player-card.compact {
+  padding: 12px 15px;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.player-card.compact:hover {
+  border-color: var(--apple-blue);
+}
+
+.player-card.compact .player-card-header {
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.player-card.compact .player-avatar {
+  width: 45px;
+  height: 45px;
+}
+
+.player-card.compact .avatar-placeholder {
+  font-size: 20px;
+}
+
+.player-card.compact .card-title {
+  font-size: 15px;
+  color: var(--near-black);
+  font-weight: 600;
+}
+
+.player-card.compact .player-stats {
+  margin-top: 4px;
+}
+
+.player-card.compact .stat-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+.player-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.player-card.compact .player-card-header {
+  margin-bottom: 0;
+}
+
+.player-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--dota-red), var(--dota-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-placeholder {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.player-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-stats {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.stat-badge {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.12px;
+  padding: 4px 10px;
+  border-radius: 980px;
+  background: var(--dark-surface-2);
+  color: var(--white);
+}
+
+.stat-badge.mmr {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--dota-gold);
+}
+
+.stat-badge.position {
+  background: rgba(116, 168, 74, 0.2);
+  color: var(--dota-green);
+}
+
+.stat-badge.tier {
+  background: rgba(0, 113, 227, 0.2);
+  color: var(--apple-blue);
+}
+
+.player-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-label {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.224px;
+}
+
+.detail-value {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.224px;
+}
+
+.player-notes {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.auction-price {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid var(--dota-gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-label {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.224px;
+}
+
+.price-value {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--dota-gold);
+  letter-spacing: 0.231px;
+}
+
+.selected-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .player-card {
+    padding: 15px;
+  }
+
+  .player-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar-placeholder {
+    font-size: 20px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+}

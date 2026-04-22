@@ -1,0 +1,282 @@
+:root {
+  --apple-blue: #0071e3;
+  --link-blue: #0066cc;
+  --bright-blue: #2997ff;
+  --pure-black: #000000;
+  --near-black: #1d1d1f;
+  --light-gray: #f5f5f7;
+  --white: #ffffff;
+
+  --text-primary-light: #1d1d1f;
+  --text-primary-dark: #ffffff;
+  --text-secondary: rgba(0, 0, 0, 0.8);
+  --text-tertiary: rgba(0, 0, 0, 0.48);
+
+  --dark-surface-1: #272729;
+  --dark-surface-2: #262628;
+  --dark-surface-3: #28282a;
+
+  --dota-red: #c23c2a;
+  --dota-green: #74a84a;
+  --dota-gold: #d4af37;
+
+  --shadow-card: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  --shadow-hero: rgba(0, 0, 0, 0.4) 0px 8px 40px 0px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display'), local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text'), local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  font-weight: 100 900;
+}
+
+body {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  color: var(--text-secondary);
+  background: var(--pure-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.display-hero {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+}
+
+.section-heading {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.10;
+}
+
+.tile-heading {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: 0.196px;
+}
+
+.card-title {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+}
+
+.sub-heading {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+}
+
+.body-text {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+}
+
+.body-emphasis {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.374px;
+}
+
+.caption {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
+}
+
+.caption-bold {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
+}
+
+.micro {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: -0.12px;
+}
+
+button {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--apple-blue);
+  color: var(--white);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 400;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background: #0077ed;
+}
+
+.btn-primary:active {
+  background: #006dd6;
+}
+
+.btn-primary:focus {
+  outline: 2px solid var(--apple-blue);
+  outline-offset: 2px;
+}
+
+.btn-dark {
+  background: var(--near-black);
+  color: var(--white);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.btn-dark:hover {
+  background: #2d2d2f;
+}
+
+.btn-pill {
+  background: transparent;
+  color: var(--link-blue);
+  padding: 6px 20px;
+  border-radius: 980px;
+  border: 1px solid var(--link-blue);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.btn-pill:hover {
+  text-decoration: underline;
+}
+
+.btn-pill.dark {
+  color: var(--bright-blue);
+  border-color: var(--bright-blue);
+}
+
+.section-light {
+  background: var(--light-gray);
+  color: var(--text-primary-light);
+}
+
+.section-dark {
+  background: var(--pure-black);
+  color: var(--text-primary-dark);
+}
+
+.card {
+  background: var(--dark-surface-1);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.card-light {
+  background: var(--white);
+  color: var(--text-primary-light);
+}
+
+input[type="text"],
+input[type="number"] {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--dark-surface-2);
+  color: var(--white);
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: 2px solid var(--apple-blue);
+  outline-offset: 0;
+  border-color: transparent;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--apple-blue);
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+@media (max-width: 834px) {
+  .display-hero {
+    font-size: 40px;
+  }
+
+  .section-heading {
+    font-size: 32px;
+  }
+
+  .tile-heading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .display-hero {
+    font-size: 28px;
+  }
+
+  .section-heading {
+    font-size: 24px;
+  }
+}

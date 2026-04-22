@@ -1,0 +1,168 @@
+.phase-container {
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+.phase-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.phase-header .display-hero {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.phase-header .sub-heading {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+}
+
+.captain-counter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 30px;
+  background: var(--dark-surface-1);
+  border-radius: 980px;
+  margin-top: 20px;
+}
+
+.counter-current {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--apple-blue);
+  line-height: 1;
+}
+
+.counter-separator {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.counter-total {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.selected-captains-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 40px;
+  min-height: 50px;
+}
+
+.captain-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--apple-blue);
+  color: var(--white);
+  border-radius: 980px;
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.224px;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+}
+
+.chip-remove {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chip-remove:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.phase-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-large {
+  padding: 12px 40px;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 980px;
+  min-width: 200px;
+}
+
+.btn-primary:disabled {
+  background: var(--dark-surface-2);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+  background: var(--dark-surface-2);
+  transform: none;
+}
+
+@media (max-width: 834px) {
+  .phase-container {
+    padding: 40px 0;
+  }
+
+  .phase-header {
+    margin-bottom: 40px;
+  }
+
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .counter-current {
+    font-size: 32px;
+  }
+
+  .counter-separator,
+  .counter-total {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .players-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-captains-bar {
+    gap: 8px;
+  }
+
+  .captain-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

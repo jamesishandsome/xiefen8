@@ -1,0 +1,196 @@
+.assignment-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.unassigned-section {
+  position: sticky;
+  top: 20px;
+  height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+}
+
+.unassigned-section .section-heading {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.unassigned-count {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  padding: 8px 16px;
+  background: rgba(0, 113, 227, 0.1);
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.unassigned-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 10px;
+  flex: 1;
+}
+
+.unassigned-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.unassigned-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.unassigned-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.unassigned-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.teams-section .section-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: var(--white);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  min-height: 150px;
+}
+
+.team-card.drag-over {
+  border-color: var(--apple-blue);
+  background: rgba(0, 113, 227, 0.05);
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.team-header .card-title {
+  font-size: 18px;
+}
+
+.team-count {
+  color: var(--text-tertiary);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 4px 12px;
+  border-radius: 980px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.team-members {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.team-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.team-member:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.member-name {
+  color: var(--near-black);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.captain-badge {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: -0.08px;
+  padding: 3px 8px;
+  background: var(--dota-gold);
+  color: var(--white);
+  border-radius: 980px;
+}
+
+.member-remove {
+  background: rgba(194, 60, 42, 0.1);
+  color: var(--dota-red);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.member-remove:hover {
+  background: var(--dota-red);
+  color: var(--white);
+}
+
+@media (max-width: 1024px) {
+  .assignment-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .unassigned-section {
+    position: static;
+  }
+
+  .unassigned-list {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .assignment-layout {
+    gap: 20px;
+  }
+}

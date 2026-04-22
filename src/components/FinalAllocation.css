@@ -1,0 +1,244 @@
+.final-allocation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.allocation-status {
+  background: var(--dark-surface-1);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+}
+
+.status-message {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.current-pick-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 30px;
+  background: var(--dark-surface-2);
+  border-radius: 980px;
+  margin-top: 10px;
+}
+
+.pick-team-name {
+  color: var(--apple-blue);
+}
+
+.pick-budget {
+  color: var(--dota-gold);
+}
+
+.available-players-section {
+  background: var(--dark-surface-1);
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.section-title {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.available-players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.player-pick-card {
+  background: var(--dark-surface-2);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.player-pick-card:hover {
+  border-color: var(--apple-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.player-pick-card.selected {
+  border-color: var(--dota-green);
+  background: var(--dark-surface-3);
+}
+
+.pick-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.pick-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--dota-red), var(--dota-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.pick-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pick-name {
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.pick-stats {
+  display: flex;
+  gap: 8px;
+}
+
+.pick-stat {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 980px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.allocation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.teams-final-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.team-final-card {
+  background: var(--dark-surface-1);
+  border-radius: 12px;
+  padding: 24px;
+  border-left: 4px solid var(--apple-blue);
+}
+
+.team-final-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-final-name {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.team-final-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.final-stat {
+  text-align: center;
+}
+
+.final-stat-value {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--dota-gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.final-stat-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.team-final-members {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.final-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--dark-surface-2);
+  border-radius: 6px;
+}
+
+.final-member-name {
+  color: var(--white);
+}
+
+.final-member-price {
+  color: var(--dota-gold);
+}
+
+.completion-message {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.completion-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.completion-title {
+  color: var(--white);
+  margin-bottom: 15px;
+}
+
+.completion-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+}
+
+@media (max-width: 834px) {
+  .available-players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .teams-final-status {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .available-players-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .current-pick-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .allocation-actions {
+    flex-direction: column;
+  }
+
+  .allocation-actions button {
+    width: 100%;
+  }
+}
