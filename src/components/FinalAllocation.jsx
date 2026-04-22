@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import * as XLSX from 'xlsx';
 import './FinalAllocation.css';
 
 const FinalAllocation = ({ players, teams }) => {
@@ -77,6 +78,68 @@ const FinalAllocation = ({ players, teams }) => {
     return -1;
   };
 
+  const handleExportToExcel = () => {
+    // 准备导出数据
+    const exportData = [];
+
+    currentTeams.forEach(team => {
+      // 添加队伍标题行
+      exportData.push({
+        '队伍名称': team.name,
+        '队长': team.captain.name,
+        '总预算': team.budget,
+        '已花费': team.spent,
+        '剩余预算': team.budget - team.spent,
+        '队员数量': team.members.length
+      });
+
+      // 添加队员信息
+      exportData.push({
+        '队伍名称': '选手姓名',
+        '队长': '位置',
+        '总预算': '自爆分数',
+        '已花费': '成交价格',
+        '剩余预算': '角色',
+        '队员数量': ''
+      });
+
+      team.members.forEach(member => {
+        exportData.push({
+          '队伍名称': member.name,
+          '队长': member.primaryPosition ? `★${member.primaryPosition} ${member.positions?.join('/')}` : member.positions?.join('/') || '',
+          '总预算': member.mmr || '',
+          '已花费': member.auctionPrice || '',
+          '剩余预算': member.id === team.captain.id ? '队长' : '队员',
+          '队员数量': ''
+        });
+      });
+
+      // 添加空行分隔
+      exportData.push({});
+    });
+
+    // 创建工作表
+    const ws = XLSX.utils.json_to_sheet(exportData);
+
+    // 设置列宽
+    ws['!cols'] = [
+      { wch: 20 }, // 队伍名称/选手姓名
+      { wch: 20 }, // 队长/位置
+      { wch: 15 }, // 总预算/自爆分数
+      { wch: 15 }, // 已花费/成交价格
+      { wch: 15 }, // 剩余预算/角色
+      { wch: 10 }  // 队员数量
+    ];
+
+    // 创建工作簿
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '队伍分配结果');
+
+    // 导出文件
+    const fileName = `Dota2拍卖结果_${new Date().toLocaleDateString('zh-CN').replace(/\//g, '-')}.xlsx`;
+    XLSX.writeFile(wb, fileName);
+  };
+
   if (isComplete) {
     return (
       <div className="phase-container section-dark">
@@ -90,6 +153,12 @@ const FinalAllocation = ({ players, teams }) => {
             <div className="completion-icon">🏆</div>
             <h1 className="completion-title display-hero">拍卖完成！</h1>
             <p className="completion-subtitle sub-heading">所有队伍已组建完毕</p>
+            <button
+              className="btn-export-excel"
+              onClick={handleExportToExcel}
+            >
+              📊 导出Excel
+            </button>
           </motion.div>
 
           <div className="teams-final-status">

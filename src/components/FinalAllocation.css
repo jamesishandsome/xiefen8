@@ -214,6 +214,32 @@
   margin-bottom: 40px;
 }
 
+.btn-export-excel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--dota-green) 0%, #82b857 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(116, 168, 74, 0.3);
+}
+
+.btn-export-excel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(116, 168, 74, 0.5);
+  background: linear-gradient(135deg, #82b857 0%, var(--dota-green) 100%);
+}
+
+.btn-export-excel:active {
+  transform: translateY(0);
+}
+
 @media (max-width: 834px) {
   .available-players-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
