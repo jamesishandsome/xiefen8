@@ -366,6 +366,94 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* 特效文字 - 四个角 */}
+      <motion.div
+        className="easter-egg-text corner-bottom-left"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          opacity: { duration: 0.5 },
+          y: { duration: 0.5 },
+          scale: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+      >
+        天空牛逼
+      </motion.div>
+
+      <motion.div
+        className="easter-egg-text corner-bottom-right"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          opacity: { duration: 0.5, delay: 0.1 },
+          y: { duration: 0.5, delay: 0.1 },
+          scale: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5
+          }
+        }}
+      >
+        天空牛逼
+      </motion.div>
+
+      <motion.div
+        className="easter-egg-text corner-top-left"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          opacity: { duration: 0.5, delay: 0.2 },
+          y: { duration: 0.5, delay: 0.2 },
+          scale: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }
+        }}
+      >
+        天空牛逼
+      </motion.div>
+
+      <motion.div
+        className="easter-egg-text corner-top-right"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: [1, 1.08, 1],
+        }}
+        transition={{
+          opacity: { duration: 0.5, delay: 0.3 },
+          y: { duration: 0.5, delay: 0.3 },
+          scale: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5
+          }
+        }}
+      >
+        天空牛逼
+      </motion.div>
     </div>
   );
 }
