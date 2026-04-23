@@ -1,7 +1,7 @@
 .bouncing-text {
   position: fixed;
   z-index: 1;
-  font-size: 48px;
+  font-size: 80px;
   font-weight: 900;
   pointer-events: none;
   user-select: none;

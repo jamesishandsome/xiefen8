@@ -56,7 +56,7 @@ export default function BouncingText() {
         filter: `hue-rotate(${color}deg)`,
       }}
     >
-      叉爱瓜
+      瓜❤️叉
     </div>
   );
 }

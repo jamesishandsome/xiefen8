@@ -105,7 +105,7 @@ body {
 .easter-egg-text {
   position: fixed;
   font-family: 'SF Pro Display', sans-serif;
-  font-size: 56px;
+  font-size: 20px;
   font-weight: 800;
   background: linear-gradient(
     45deg,
