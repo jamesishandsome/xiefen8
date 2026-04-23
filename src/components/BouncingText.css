@@ -1,0 +1,53 @@
+.bouncing-text {
+  position: fixed;
+  z-index: 1;
+  font-size: 48px;
+  font-weight: 900;
+  pointer-events: none;
+  user-select: none;
+  background: linear-gradient(
+    45deg,
+    #ff0080,
+    #ff8c00,
+    #40e0d0,
+    #ff0080
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite, float-bounce 2s ease-in-out infinite;
+  text-shadow:
+    0 0 20px rgba(255, 0, 128, 0.5),
+    0 0 40px rgba(255, 140, 0, 0.3),
+    0 0 60px rgba(64, 224, 208, 0.2);
+  filter: drop-shadow(0 0 10px rgba(255, 0, 128, 0.6));
+  letter-spacing: 2px;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float-bounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+}

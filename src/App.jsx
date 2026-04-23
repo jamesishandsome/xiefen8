@@ -5,6 +5,7 @@ import TeamAssignment from './components/TeamAssignment';
 import BudgetSetup from './components/BudgetSetup';
 import AuctionPhase from './components/AuctionPhase';
 import FinalAllocation from './components/FinalAllocation';
+import BouncingText from './components/BouncingText';
 import { parseExcelFile, loadDefaultExcel } from './utils/excelParser';
 import { saveState, loadState, clearState, exportState, importState } from './utils/storage';
 import './styles/global.css';
@@ -367,6 +368,9 @@ function App() {
         )}
       </AnimatePresence>
 
+      {/* 弹跳广告 */}
+      <BouncingText />
+
       {/* 特效文字 - 四个角 */}
       <motion.div
         className="easter-egg-text corner-bottom-left"
@@ -386,7 +390,7 @@ function App() {
           }
         }}
       >
-        天空牛逼
+        天空牛福
       </motion.div>
 
       <motion.div
@@ -408,7 +412,7 @@ function App() {
           }
         }}
       >
-        天空牛逼
+        天空牛福
       </motion.div>
 
       <motion.div
@@ -430,7 +434,7 @@ function App() {
           }
         }}
       >
-        天空牛逼
+        天空牛福
       </motion.div>
 
       <motion.div
@@ -452,7 +456,7 @@ function App() {
           }
         }}
       >
-        天空牛逼
+        天空牛福
       </motion.div>
     </div>
   );
